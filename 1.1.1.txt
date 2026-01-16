@@ -1,0 +1,33 @@
+1.create a table st_info with 3 subject and calculate total and percentage.
+2.insert atleast 10 records.
+
+ create table st_info (prn int,st_name varchar(20),m1 int ,m2 int,m3 int);
+
+
+
+#but i forgot to add percentage;
+alter table st_info add total int;
+alter table st_info add perc number;
+
+desc tablename; #to display the structure of the table i.e attributes of the table
+
+insert into st_info values (102,'as',34,445,15);#error
+insert into st_info values (102,'as',34,445,15,null,null);
+
+or
+insert into st_info values (prn,st_name,m1,m2,m3) values (111,'mkf',1,2,34);
+insert into st_info values (prn,st_name,m1,m2,m3) values (111,'mkf',1,2,34);
+insert into st_info values (prn,st_name,m1,m2,m3) values (111,'mkf',1,2,34);
+insert into st_info values (prn,st_name,m1,m2,m3) values (111,'mkf',1,2,34);
+insert into st_info values (prn,st_name,m1,m2,m3) values (111,'mkf',1,2,34);
+insert into st_info values (prn,st_name,m1,m2,m3) values (111,'mkf',1,2,34);
+insert into st_info values (prn,st_name,m1,m2,m3) values (111,'mkf',1,2,34);
+insert into st_info values (prn,st_name,m1,m2,m3) values (111,'mkf',1,2,34);
+
+#to calculate total &perc we use update command
+
+update st_info set total = m1+m2+m3;
+perc= total/3;
+
+#to delete all rows and colms i.e data in the table
+truncate table st_info; 
