@@ -1,0 +1,55 @@
+1.create a table st_info with PRN,ST_NAME,M1,M2,M3
+CREATE TABLE st_info (
+    PRN INT,
+    ST_NAME VARCHAR2(50),
+    M1 INT,
+    M2 INT,
+    M3 INT
+);
+
+#to change int to number
+alter table st_info modify m1 number;
+
+2.insert atleast 7 rows into the table
+
+INSERT INTO st_info VALUES (101, 'Amit', 78, 15, 90);
+INSERT INTO st_info VALUES (101, 'Ankit', 74, 85, 90);
+INSERT INTO st_info VALUES (101, 'Amay', 23, 87, 90);
+INSERT INTO st_info VALUES (101, 'Arya', 88, 85, 90);
+INSERT INTO st_info VALUES (101, 'Ayush', 98, 85, 90);
+INSERT INTO st_info VALUES (101, 'Atharv', 69, 85, 90);
+INSERT INTO st_info VALUES (101, 'Ankush', 25, 85, 90);
+
+
+2.1 select * from tab;
+#the above command will display no. of tables present in the database from user mad
+
+
+2.2 select * from st_info;
+#the above command will display no. of rows present in  the table st_info
+
+
+
+
+3.add columns total & percentage to the table
+
+alter table st_info add (total number,perc number);
+
+**INSERT INTO st_info VALUES (101, 'Amit', 78, 15, 90)
+            *
+ERROR at line 1:
+ORA-00947: not enough values**
+
+
+INSERT INTO st_info (PRN,ST_NAME,M1,M2,M3) values(101, 'Amit', 78, 15, 90);
+or
+INSERT INTO st_info values(1099, 'Amit', 78, 15, 90,null,null);
+            
+
+
+4.calculate and update total and percentage
+
+update st_info
+SET
+    total = M1 + M2 + M3,
+    perc = (M1 + M2 + M3) / 3;
