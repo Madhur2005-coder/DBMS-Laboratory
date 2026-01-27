@@ -1,0 +1,21 @@
+1.REPLACE() is a string function, Used to replace text inside a string, Does not change table structure
+
+2.#to show table
+
+ desc department;
+
+3.update instructor set salary = salary+salary*10/100 where dept_id = (select dept_id from department
+ where name='Computer Science');
+
+4. #number(38)--> int value
+
+5. select  * from course;
+#It displays all rows and all columns in the course table.
+
+6.create a new course"CS-001", titled "Weekly Seminar",with 1 credits
+INSERT INTO course (course_id, title, credits)
+VALUES ('CS-001', 'Weekly Seminar', 1);
+
+7.create a section of this course in Fall 2017,with sec_id of 1,and with the location of this section not yet specified
+INSERT INTO SECTION (section_id, course_id, sec_id, semester, year, building, room_number)
+  2  VALUES (8, 'CS-001', 1, 'Fall', 2017, NULL, NULL);
