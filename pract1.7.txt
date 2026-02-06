@@ -1,0 +1,25 @@
+display names of instruction working for the past 5 years
+select name from instruction where hiredate<add_months(sysdate,-60);
+
+display the list of instruction who have joined before 1 th Jan 2021 or after 31 th jun 2021.
+select name from instructor where hiredate>= date'01-jan-2021' and hiredate<= date'30-june-2021';
+
+print a list of instructors displaying 'less Salary' if less than 60000,'Exact salary'if exactly 60000,and'more salary 'if greater than 60000:
+
+1.	Display all employee names that starts with "a" and are at least 3 characters in length.
+SELECT first_name
+FROM emp
+WHERE LOWER(first_name) LIKE 'a%'
+  AND LENGTH(first_name) >= 3;
+
+2.	Display departments having Dollas, New York and Chicago locations.
+
+SELECT *
+FROM departments
+WHERE location IN ('Dallas', 'New York', 'Chicago');
+
+3.	Display the names of employees who are working as clerk, salesman or analyst and drawing a salary more than 3000.
+SELECT first_name, last_name
+FROM emp
+WHERE job IN ('CLERK', 'SALESMAN', 'ANALYST')
+  AND salary > 3000;
