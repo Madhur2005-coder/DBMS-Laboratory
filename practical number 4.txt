@@ -1,0 +1,60 @@
+1.	Display all employee names that starts with "a" and are at least 3 characters in length.
+2.	Display departments having Dollas, New York and Chicago locations.
+3.	Display the names of employees who are working as clerk, salesman or analyst and drawing a salary more than 3000.
+4.	Display the names of employees who are not working as managers.
+5.	Display the name of emp who earns highest salary
+6.	Display the employee number and name of employee working as CLERK and earning highest salary among CLERKS.
+7.	Display the names of clerks who earn salary more than that of James of that of sal lesser  than that of Scott.
+8.	Display the names of the employees who earn highest salary in their respective departments.
+9.	Display those employees who are working in the same dept where his manager is    working
+
+
+
+
+1.SELECT first_name
+FROM emp
+WHERE first_name LIKE 'A%' 
+  AND LENGTH(first_name) >= 3;
+
+2.SELECT dept_name, location
+FROM departments
+WHERE location IN ('Dallas', 'New York', 'Chicago');
+
+3.SELECT first_name, job, salary
+FROM emp
+WHERE job IN ('CLERK', 'SALESMAN', 'ANALYST')
+  AND salary > 3000;
+
+4.SELECT first_name, job
+FROM emp
+WHERE job <> 'MANAGER';
+
+5.SELECT first_name, salary
+FROM emp
+WHERE salary = (SELECT MAX(salary) FROM emp);
+
+6.SELECT emp_no, first_name, salary
+FROM emp
+WHERE job = 'CLERK'
+  AND salary = (SELECT MAX(salary) FROM emp WHERE job = 'CLERK');
+
+7.SELECT first_name, salary
+FROM emp
+WHERE job = 'CLERK'
+  AND salary > (SELECT salary FROM emp WHERE first_name = 'James')
+  AND salary < (SELECT salary FROM emp WHERE first_name = 'Scott');
+
+8.SELECT e.first_name, e.deptno, e.salary
+FROM emp e
+WHERE e.salary = (
+    SELECT MAX(salary) 
+    FROM emp 
+    WHERE deptno = e.deptno
+);
+
+9.SELECT e.first_name AS employee, m.first_name AS manager, e.deptno
+FROM emp e
+JOIN emp m ON e.manager_id = m.emp_no
+WHERE e.deptno = m.deptno;
+
+10.
