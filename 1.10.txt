@@ -1,0 +1,112 @@
+CREATE OR REPLACE PROCEDURE Add1 AS
+    a NUMBER := 5;
+    b NUMBER := 10;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Result: ' || (a + b));
+END;
+/
+
+--------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE Add2 (a in number, b in number)
+as   
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Result: ' || (a + b));
+END;
+/
+
+--------------------------------------------------------------
+CREATE OR REPLACE PROCEDURE Add3 (
+    a IN NUMBER,
+    b IN NUMBER,
+    c OUT NUMBER
+) AS
+BEGIN
+    c := a + b;
+END;
+/
+
+SET SERVEROUTPUT ON;
+
+VARIABLE c1 NUMBER;
+
+EXEC Add3(5,20,:c1);
+
+PRINT c1;
+---------------------------------------------------------------------
+CREATE OR REPLACE PROCEDURE Swap(
+    a IN OUT NUMBER,
+    b IN OUT NUMBER
+) AS
+BEGIN
+    a := a + b;
+    b := a - b;
+    a := a - b;
+
+    DBMS_OUTPUT.PUT_LINE('After swapping a=' || a || ' b=' || b);
+END;
+/
+VARIABLE x NUMBER;
+VARIABLE y NUMBER;
+
+EXEC :x := 10;
+EXEC :y := 29;
+
+EXEC Swap(:x, :y);
+
+PRINT x;
+PRINT y;
+
+--------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE CircleArea (
+    r IN NUMBER
+) AS
+    area NUMBER;
+BEGIN
+    area := 3.14159 * r * r;
+    DBMS_OUTPUT.PUT_LINE('Area of the circle is: ' || area);
+END;
+/
+
+SET SERVEROUTPUT ON;
+EXEC CircleArea(5);
+
+--------------------------------------------------------
+Q.create a calculator for  2 num
+Add,mult,div,sub;
+
+
+CREATE OR REPLACE PROCEDURE Cal(
+    a IN NUMBER,
+    b IN NUMBER
+) AS
+    sum_val NUMBER;
+    sub_val NUMBER;
+    mul_val NUMBER;
+    div_val NUMBER;
+BEGIN
+    -- Addition
+    sum_val := a + b;
+    DBMS_OUTPUT.PUT_LINE('Add: ' || sum_val);
+
+    -- Subtraction
+    sub_val := a - b;
+    DBMS_OUTPUT.PUT_LINE('Sub: ' || sub_val);
+
+    -- Multiplication
+    mul_val := a * b;
+    DBMS_OUTPUT.PUT_LINE('Mul: ' || mul_val);
+
+    -- Division
+    IF b = 0 THEN
+        DBMS_OUTPUT.PUT_LINE('Div: Division by zero not allowed');
+    ELSE
+        div_val := a / b;
+        DBMS_OUTPUT.PUT_LINE('Div: ' || div_val);
+    END IF;
+END;
+/
+
+SET SERVEROUTPUT ON;
+EXEC Cal(10, 5);
