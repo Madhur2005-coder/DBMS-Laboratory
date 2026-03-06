@@ -1,0 +1,55 @@
+WHILE LOOP PrOgRaM
+
+
+program for printing 10 no
+
+
+CREATE OR REPLACE PROCEDURE print_numbers
+IS
+   i NUMBER := 1;
+BEGIN
+   WHILE i <= 10 LOOP
+      DBMS_OUTPUT.PUT_LINE(i);
+      i := i + 1;
+   END LOOP;
+END;
+/
+|||||||||||||||||||||||||||||||||||||||
+
+program for 10 even no
+
+CREATE OR REPLACE PROCEDURE even_no
+AS
+   a NUMBER := 0;
+BEGIN
+   WHILE a <= 10 LOOP
+      IF MOD(a,2) = 0 THEN
+         DBMS_OUTPUT.PUT_LINE(a);
+      END IF;
+      a := a + 1;
+   END LOOP;
+END;
+/
+||||||||||||||||||||||||||||||||||||||||||||
+
+program for sum of 10 no
+
+CREATE OR REPLACE PROCEDURE sum_no
+AS
+   a NUMBER := 1;
+   sum NUMBER := 0;
+BEGIN
+   WHILE a <= 10 LOOP
+      sum := sum + a;  -- add current number to sum
+      a := a + 1;      -- increment a
+   END LOOP;
+
+   DBMS_OUTPUT.PUT_LINE('Sum of 1 to 10 = ' || sum);
+END;
+/
+
+||||||||||||||||||||||||||||||||||||||||
+
+
+FOR LOOP
+
