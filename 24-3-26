@@ -1,0 +1,37 @@
+create or replace procedure show_st(rno number)
+as
+s_roll st_info.roll%type;
+s_name st_info.name%type;
+s_sub1 st_info.sub1%type;
+s_sub2 st_info.sub2%type;
+s_sub3 st_info.sub3%type;
+s_sub4 st_info.sub4%type;
+begin 
+select roll, name, sub1, sub2, sub3, sub4 into 
+s_roll, s_name, s_sub1, s_sub2, s_sub3, s_sub4 from st_info where roll = rno;
+dbms_output.put_line('Roll No : ' || s_roll);
+dbms_output.put_line('Name : ' || s_name);
+dbms_output.put_line('Sub 1 : ' || s_sub1);
+dbms_output.put_line('Sub 2 : ' || s_sub2);
+dbms_output.put_line('Sub 3 : ' || s_sub3);
+dbms_output.put_line('Sub 4 : ' || s_sub4);
+end;
+/
+
+///////////////
+
+create or replace procedure exc1(n in number)
+as
+Vname employees.emp_name%type;
+Vsalary employees.salary%type;
+begin
+select emp_name, salary into Vname, Vsalary from employees where emp_id = n;
+dbms_output.put_line('emp name = '|| Vname);
+dbms_output.put_line('emp salary = '|| Vsalary);
+
+exception 
+when no_data_found then
+dbms_output.put_line('emp id not found');
+
+end;
+/
